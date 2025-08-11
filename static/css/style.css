@@ -1,0 +1,126 @@
+/* Replace your existing style.css with this file */
+/* Uses Poppins font (included via HTML) */
+
+:root{
+  --bg1: #0f172a;
+  --panel: #0b1220;
+  --accent1: #7c4dff;
+  --accent2: #42a5f5;
+  --muted: #cbd5e1;
+}
+
+*{box-sizing:border-box}
+body, html { height: 100%; margin:0; font-family: 'Poppins', sans-serif; }
+
+/* app background */
+.app-bg{
+  background: linear-gradient(135deg, rgba(64,35,255,0.95) 0%, rgba(66,165,245,0.95) 100%);
+  min-height: 100vh;
+  color: #eef2ff;
+}
+
+/* big container: left form and right illustration */
+.app-container{
+  max-width: 1200px;
+  margin: 48px auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 28px;
+  align-items: start;
+  padding: 20px;
+}
+
+/* Left panel */
+.left-panel { padding: 6px 10px; }
+.brand { display:flex; gap:12px; align-items:center; margin-bottom:18px; }
+.logo-circle{
+  width:56px; height:56px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:18px;
+  background: linear-gradient(135deg, #fff3 0%, #ffffff22 100%);
+  color:#fff;
+}
+.brand h1 { margin:0; font-size:20px; letter-spacing:0.3px; }
+.brand h1 span { color: #fff; opacity: 0.95; font-weight:700; }
+
+/* Form card */
+.form-card{
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+.form-card .card-body { padding: 22px; }
+.section-title { color: var(--muted); font-weight:600; margin-top:8px; margin-bottom: -4px; }
+
+/* input labels with icon space */
+.icon-label { display:block; margin-bottom:6px; }
+
+/* CTA button */
+.btn-cta{
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  border: none; color:#fff; padding:12px 28px;
+  border-radius: 12px; font-weight:700;
+  box-shadow: 0 6px 18px rgba(12,12,60,0.18);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.btn-cta:hover{ transform: translateY(-3px); box-shadow: 0 12px 30px rgba(12,12,60,0.22); }
+.btn-cta.loading{ opacity:0.8; transform:none; }
+
+/* small cards row */
+.info-cards{ display:flex; gap:10px; margin-top:18px; }
+.small-card{
+  background: rgba(255,255,255,0.04);
+  padding:10px 12px;border-radius:10px; min-width:120px;
+  text-align:left; color: #e6eefc;
+}
+.small-card .muted { color: #dce7ffaa; font-size:13px; margin-top:6px; }
+
+/* footer */
+.app-footer{ margin-top: 14px; font-size:13px; color:#e6eeffcc; }
+
+/* Right panel */
+.right-panel { display:flex; flex-direction:column; gap:14px; }
+.hero-illustration svg { width:100%; border-radius:12px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,0.18); }
+.tips .card-body { padding:14px; color:#e6eefc; background: rgba(255,255,255,0.03); border-radius:8px; }
+.metric-row { display:flex; gap:18px; margin-top:8px; }
+.metric-value { font-weight:700; font-size:20px; color:#fff; }
+
+/* RESULT PAGE STYLES (result.html uses same file) */
+.result-wrap { max-width:1100px; margin: 48px auto; color: #0b1220; }
+.result-card { background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); border-radius: 14px; color: #0b1220; }
+.model-box { text-align:right; }
+.model-name { font-weight:700; color: #111827; }
+
+.gauge-wrap { margin-top:6px; }
+.gauge-label { font-size:13px; color:#6b7280; margin-bottom:8px; }
+.gauge {
+  height: 56px; background: #e6eefc; border-radius: 40px;
+  position: relative; overflow:hidden;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+}
+.gauge-fill {
+  height:100%; background: linear-gradient(90deg, #4ade80, #22c55e);
+  width:0%; border-radius:40px; transition: width 800ms cubic-bezier(.2,.9,.3,1);
+}
+.gauge-text {
+  position:absolute; right:12px; top:50%; transform:translateY(-50%);
+  font-weight:700; color:#05223b;
+}
+
+/* stat cards inside result */
+.stat-card { background:#f8fafb; padding:12px; border-radius:10px; text-align:center; }
+.stat-title { font-size:12px; color:#6b7280; }
+.stat-value { font-size:18px; font-weight:700; }
+
+/* chart container */
+.chart-holder img { width:100%; height:auto; display:block; border-radius:8px; }
+
+/* small helper */
+.muted { color:#cbd5e1; }
+.card-subtitle { color: #dbeafe; }
+
+/* Responsive tweaks */
+@media (max-width: 992px){
+  .app-container { grid-template-columns: 1fr; padding: 18px; }
+  .right-panel { order: -1; }
+  .result-wrap { padding: 18px; }
+}

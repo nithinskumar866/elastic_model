@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Employee Productivity — Elastic Net</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  </head>
+  <body class="app-bg">
+    <div class="app-container">
+      <!-- Left: Form -->
+      <section class="left-panel">
+        <div class="brand">
+          <div class="logo-circle">EN</div>
+          <div>
+            <h1>Elastic<span>Net</span> Studio</h1>
+            <p class="muted">Predict monthly productivity — fast, interpretable, and stylish.</p>
+          </div>
+        </div>
+
+        <div class="card form-card shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title">Enter employee metrics</h4>
+            <p class="card-subtitle muted">Use realistic values for best estimates</p>
+
+            <form method="post" id="predictForm" class="row gx-3 gy-3 mt-2">
+              <!-- Group 1: Workload -->
+              <div class="col-12 section-title">Workload</div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">🕒 Hours / week</label>
+                <input name="hours_worked_per_week" class="form-control form-control-lg" type="number" step="0.1" value="40" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">📅 Meetings / week</label>
+                <input name="meetings_per_week" class="form-control form-control-lg" type="number" value="6" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">✉️ Avg email response (mins)</label>
+                <input name="avg_email_response_time_mins" class="form-control form-control-lg" type="number" step="0.1" value="60" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">🗂️ Projects handled</label>
+                <input name="projects_handled" class="form-control form-control-lg" type="number" value="2" required>
+              </div>
+
+              <!-- Group 2: Habits & Skills -->
+              <div class="col-12 section-title">Habits & Skills</div>
+
+              <div class="col-md-4">
+                <label class="form-label icon-label">☕ Coffee / day</label>
+                <input name="coffee_cups_per_day" class="form-control form-control-lg" type="number" value="2" required>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label icon-label">🎓 Training hrs / month</label>
+                <input name="training_hours_per_month" class="form-control form-control-lg" type="number" step="0.1" value="6" required>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label icon-label">⭐ Experience (yrs)</label>
+                <input name="experience_years" class="form-control form-control-lg" type="number" step="0.1" value="3" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">🏠 Remote ratio (0-1)</label>
+                <input name="remote_work_ratio" class="form-control form-control-lg" type="number" step="0.01" min="0" max="1" value="0.5" required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label icon-label">⚠️ Distraction hrs / week</label>
+                <input name="distraction_hours_per_week" class="form-control form-control-lg" type="number" step="0.1" value="5" required>
+              </div>
+
+              <div class="col-12 text-center mt-3">
+                <button id="submitBtn" class="btn btn-primary btn-cta btn-lg" type="submit">Predict Productivity</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="info-cards">
+          <div class="small-card">
+            <strong>Model</strong><div class="muted">Elastic Net</div>
+          </div>
+          <div class="small-card">
+            <strong>Robust to</strong><div class="muted">Correlated features</div>
+          </div>
+          <div class="small-card">
+            <strong>Good for</strong><div class="muted">Feature selection + stability</div>
+          </div>
+        </div>
+
+        <footer class="app-footer muted">
+          Built with ❤️ • Elastic Net demo
+        </footer>
+      </section>
+
+      <!-- Right: Illustration / Quick tips -->
+      <aside class="right-panel">
+        <div class="hero-illustration">
+          <!-- simple inline SVG illustration -->
+          <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#7c4dff"/>
+                <stop offset="100%" stop-color="#42a5f5"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="400" rx="20" fill="url(#g1)"/>
+            <g transform="translate(40,60)" fill="#fff" opacity="0.95">
+              <rect x="0" y="0" width="260" height="80" rx="10" fill="#ffffff22"/>
+              <text x="20" y="30" font-size="18" font-weight="600">Team Productivity</text>
+              <text x="20" y="55" font-size="13">Predict monthly productivity and spot high/low performers</text>
+
+              <g transform="translate(20,100)">
+                <circle cx="30" cy="30" r="28" fill="#ffffff33"/>
+                <rect x="70" y="8" width="150" height="14" rx="6" fill="#ffffff33"/>
+                <rect x="70" y="34" width="110" height="14" rx="6" fill="#ffffff33"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div class="tips card shadow-sm">
+          <div class="card-body">
+            <h5 class="mb-2">Quick Tips</h5>
+            <ul class="muted">
+              <li>Use realistic hours — extremely high hours may reduce productivity.</li>
+              <li>High meeting load usually reduces effective output.</li>
+              <li>Training & experience increase productivity over time.</li>
+            </ul>
+            <hr>
+            {% if metrics %}
+              <div class="metric-row">
+                <div>
+                  <small class="muted">RMSE</small>
+                  <div class="metric-value">{{ metrics.rmse | round(2) }}</div>
+                </div>
+                <div>
+                  <small class="muted">R²</small>
+                  <div class="metric-value">{{ metrics.r2 | round(2) }}</div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Minimal JS to add subtle button animation -->
+    <script>
+      const btn = document.getElementById('submitBtn');
+      const form = document.getElementById('predictForm');
+      form.addEventListener('submit', () => {
+        btn.disabled = true;
+        btn.innerText = 'Predicting...';
+        btn.classList.add('loading');
+      });
+    </script>
+  </body>
+</html>
