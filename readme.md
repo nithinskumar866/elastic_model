@@ -54,7 +54,7 @@ The dataset contains the following features:
 ### 1 Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/crop-recommendation.git
+git clone https://github.com/nithinskumar866/elastic_model.git
 cd crop-recommendation
 ```
 
